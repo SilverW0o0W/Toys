@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeEyeLaunch", "TimeEyeLaunch\TimeEyeLaunch.csproj", "{B6668D84-FD9B-4291-96BA-3C3E87A39327}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeEye", "TimeEye\TimeEye.csproj", "{0E1AE877-F777-4568-82CA-744B0CE5F438}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B6668D84-FD9B-4291-96BA-3C3E87A39327}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6668D84-FD9B-4291-96BA-3C3E87A39327}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6668D84-FD9B-4291-96BA-3C3E87A39327}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6668D84-FD9B-4291-96BA-3C3E87A39327}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E1AE877-F777-4568-82CA-744B0CE5F438}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E1AE877-F777-4568-82CA-744B0CE5F438}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E1AE877-F777-4568-82CA-744B0CE5F438}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E1AE877-F777-4568-82CA-744B0CE5F438}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
