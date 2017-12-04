@@ -21,8 +21,6 @@ namespace TimeEyeLaunch
             {
                 return;
             }
-            Regex regex = new Regex(pattern);
-            TimeSpan span = new TimeSpan(0, 0, 5);
             Core core = new Core();
         }
     }
