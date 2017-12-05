@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 using TimeEye;
 
 namespace TimeEyeLaunch
@@ -13,15 +10,13 @@ namespace TimeEyeLaunch
     {
         static void Main(string[] args)
         {
-            string outputFile = string.Format("Period-{0}.log", DateTime.Now.ToString("yyyyMMddHHmmssfff"));
-            string fileName = "2.log";
-            string pattern = @"\d\d-\d\d \d\d:\d\d:\d\d,\d\d\d";
-            string pattern2 = "MM-dd HH:mm:ss,fff";
-            if (!File.Exists(fileName))
-            {
-                return;
-            }
-            Core core = new Core();
+            string fileName = Console.ReadLine();
+            Configuration config = new Configuration();
+            config.LoadConfigFile();
+            Core core = new Core(config);
+            core.Scan(fileName);
+            Console.WriteLine("**********Press any key to exit**********");
+            Console.ReadKey();
         }
     }
 }

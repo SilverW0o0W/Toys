@@ -12,8 +12,17 @@ namespace TimeEye
     {
         public Configuration Config { get; set; }
 
-        public void Scan(string inputFile, string pattern, string format)
+        public Core(Configuration config)
         {
+            this.Config = config;
+        }
+
+        public void Scan(string inputFile, string pattern = null, string format = null)
+        {
+            if (!File.Exists(inputFile))
+            {
+                return;
+            }
             Regex regex = new Regex(pattern);
             using (StreamReader reader = new StreamReader(inputFile, Encoding.UTF8))
             {
@@ -21,7 +30,6 @@ namespace TimeEye
                 string lastLine = string.Empty;
                 bool firstMatch = true;
                 bool lastPrinted = false;
-
 
                 using (StreamWriter writer = new StreamWriter(Config.OutputFile))
                 {
