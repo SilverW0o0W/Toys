@@ -10,6 +10,7 @@ namespace TimeEyeLaunch
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("**********Input file name**********");
             string fileName = Console.ReadLine();
             Configuration config = new Configuration();
             config.LoadConfigFile();
