@@ -48,3 +48,8 @@ Temporary Items
 TimeEye/*/bin
 TimeEye/*/obj
 TimeEye/.vs/
+
+
+FieldExtractor/.vs/
+FieldExtractor/*/bin
+FieldExtractor/*/obj
