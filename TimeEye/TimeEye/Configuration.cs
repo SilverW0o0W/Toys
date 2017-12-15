@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
 using System.Xml;
 using System.Globalization;
@@ -34,12 +31,21 @@ namespace TimeEye
             set { outputFile = value; }
         }
 
-        public bool LoadConfigFile()
+        public AdvanceConfiguration Advance { get; set; }
+
+        public Configuration()
         {
-            if (!File.Exists(this.configFile))
+            this.Advance = new AdvanceConfiguration();
+        }
+
+        public bool LoadConfigFile(string filePath = null)
+        {
+            filePath = filePath ?? this.configFile;
+            if (!File.Exists(filePath))
             {
                 return false;
             }
+            this.configFile = filePath;
             XmlDocument document = new XmlDocument();
             document.Load(this.configFile);
             foreach (XmlElement node in document.DocumentElement.ChildNodes)
@@ -52,6 +58,9 @@ namespace TimeEye
                         break;
                     case "PERIOD":
                         this.Period = GetPeriod(node);
+                        break;
+                    case "ADVANCE":
+                        this.Advance.GetAdvanceConfig(node);
                         break;
                     default:
                         break;
@@ -109,6 +118,34 @@ namespace TimeEye
                     return defaultValue;
                 }
                 return value;
+            }
+        }
+    }
+
+    public class AdvanceConfiguration
+    {
+        public bool Depth { get; set; }
+        public AdvanceConfiguration()
+        {
+            this.Depth = false;
+        }
+
+        public void GetAdvanceConfig(XmlElement rootElement)
+        {
+            foreach (XmlElement element in rootElement.ChildNodes)
+            {
+                switch (element.Name.ToUpper(CultureInfo.InvariantCulture))
+                {
+                    case "DEPTHSCAN":
+                        bool depth;
+                        if (bool.TryParse(element.InnerText, out depth))
+                        {
+                            this.Depth = depth;
+                        }
+                        break;
+                    default:
+                        break;
+                }
             }
         }
     }

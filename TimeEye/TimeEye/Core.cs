@@ -17,14 +17,48 @@ namespace TimeEye
             this.Config = config;
         }
 
-        public void Scan(string inputFile, string pattern = null, string format = null)
+        public void Scan(string path, bool isDir = false)
         {
-            if (!File.Exists(inputFile))
+            int pathType;
+            if (isDir || Directory.Exists(path))
+            {
+                pathType = 2;
+            }
+            else if (File.Exists(path))
+            {
+                pathType = 1;
+            }
+            else
+            {
+                return;
+            }
+
+            if (pathType == 1)
+            {
+                ScanFile(path);
+            }
+            else
+            {
+                DirectoryInfo currentDir = new DirectoryInfo(path);
+                foreach (FileInfo file in currentDir.GetFiles())
+                {
+                    ScanFile(file.FullName);
+                };
+                foreach (DirectoryInfo dir in currentDir.GetDirectories())
+                {
+                    Scan(dir.FullName, true);
+                }
+            }
+        }
+
+        public void ScanFile(string filePath, string pattern = null, string format = null)
+        {
+            if (!File.Exists(filePath))
             {
                 return;
             }
             Regex regex = new Regex(pattern);
-            using (StreamReader reader = new StreamReader(inputFile, Encoding.UTF8))
+            using (StreamReader reader = new StreamReader(filePath, Encoding.UTF8))
             {
                 DateTime lastTime = DateTime.MinValue;
                 string lastLine = string.Empty;
